@@ -601,7 +601,6 @@
             <a href="#skills" class="nav-link">Skills</a>
             <a href="#projects" class="nav-link">Projects</a>
             <a href="#experience" class="nav-link">Experience</a>
-            <a href="#testimonials" class="nav-link">Testimonials</a>
             <a href="#contact" class="nav-link">Contact</a>
         </div>
         <div class="flex items-center">
@@ -625,7 +624,7 @@
             <a href="#skills" class="text-xl text-white hover:text-yellow-400">Skills</a>
             <a href="#projects" class="text-xl text-white hover:text-yellow-400">Projects</a>
             <a href="#experience" class="text-xl text-white hover:text-yellow-400">Experience</a>
-            <a href="#testimonials" class="text-xl text-white hover:text-yellow-400">Testimonials</a>
+         
             <a href="#contact" class="text-xl text-white hover:text-yellow-400">Contact</a>
         </div>
     </div>
@@ -1120,94 +1119,6 @@
                                 <p class="text-sm text-gray-400">Bengaluru, India</p>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="py-16 reveal">
-            <h2 class="text-3xl font-bold mb-10 text-yellow-400 text-center section-title">Testimonials</h2>
-            
-            <div class="section-card p-8">
-                <div class="testimonial-slider data-carousel="slide"">
-                    <!-- Testimonial 1 -->
-                    <div class="testimonial-slide">
-                        <div class="p-6 rounded-lg border border-yellow-900">
-                            <div class="flex items-start mb-4">
-                                <div class="text-yellow-400 text-4xl mr-4">
-                                    <i class="fas fa-quote-left"></i>
-                                </div>
-                                <p class="italic text-gray-300 leading-relaxed">
-                                    "I’ve had the pleasure of knowing Pavan, and his expertise in data analytics is truly exceptional. He have an incredible ability to transform complex datasets into clear, actionable insights that drive smart decision-making. Whether it’s uncovering trends, optimizing processes, or presenting findings in a way that’s easy to grasp, Pavan consistently delivers results with precision and creativity. Their passion for data and problem-solving makes them an invaluable asset to any team!"
-                                </p>
-                            </div>
-                            <div class="flex items-center mt-6">
-                                <div class="w-12 h-12 rounded-full bg-yellow-800 flex items-center justify-center mr-4 overflow-hidden">
-                                    <span class="text-xl font-bold">CG</span>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold">Chetan Gowda</h4>
-                                    <p class="text-sm text-gray-400">Team Lead, Spire Technologies</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Testimonial 2 -->
-                    <div class="testimonial-slide hidden">
-                        <div class="p-6 rounded-lg border border-yellow-900">
-                            <div class="flex items-start mb-4">
-                                <div class="text-yellow-400 text-4xl mr-4">
-                                    <i class="fas fa-quote-left"></i>
-                                </div>
-                                <p class="italic text-gray-300 leading-relaxed">
-                                    "Working with Pavan on our data analytics project was a pleasure. His attention to detail and innovative approach helped us derive valuable insights from complex datasets. His technical skills combined with an analytical mindset make him an asset to any team."
-                                </p>
-                            </div>
-                            <div class="flex items-center mt-6">
-                                <div class="w-12 h-12 rounded-full bg-yellow-800 flex items-center justify-center mr-4 overflow-hidden">
-                                    <span class="text-xl font-bold">AP</span>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold">Anita Patel</h4>
-                                    <p class="text-sm text-gray-400">Data Science Manager, Edureka</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Testimonial 3 -->
-                    <div class="testimonial-slide hidden">
-                        <div class="p-6 rounded-lg border border-yellow-900">
-                            <div class="flex items-start mb-4">
-                                <div class="text-yellow-400 text-4xl mr-4">
-                                    <i class="fas fa-quote-left"></i>
-                                </div>
-                                <p class="italic text-gray-300 leading-relaxed">
-                                    "Pavan's contributions to our team project were invaluable. His expertise in Python and data visualization helped us present complex information in an accessible way. His collaborative approach and willingness to mentor others made him a true team player."
-                                </p>
-                            </div>
-                            <div class="flex items-center mt-6">
-                                <div class="w-12 h-12 rounded-full bg-yellow-800 flex items-center justify-center mr-4 overflow-hidden">
-                                    <span class="text-xl font-bold">SK</span>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold">Suresh Krishnan</h4>
-                                    <p class="text-sm text-gray-400">Team Lead, MVJ College Group Project</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Navigation buttons -->
-                    <div class="flex justify-center mt-8 gap-4">
-                        <button id="prev-testimonial" class="w-10 h-10 rounded-full bg-yellow-900 bg-opacity-30 hover:bg-opacity-50 flex items-center justify-center transition-colors" aria-label="Previous testimonial">
-                            <i class="fas fa-chevron-left text-yellow-400"></i>
-                        </button>
-                        <button id="next-testimonial" class="w-10 h-10 rounded-full bg-yellow-900 bg-opacity-30 hover:bg-opacity-50 flex items-center justify-center transition-colors" aria-label="Next testimonial">
-                            <i class="fas fa-chevron-right text-yellow-400"></i>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -2134,68 +2045,6 @@
                 if (icon) icon.classList.add('transform', 'rotate-180');
             }
         };
-        
-        // TESTIMONIAL SLIDER - Optimized
-        const testimonialSlides = document.querySelectorAll('.testimonial-slide');
-if (testimonialSlides.length > 0) {
-    const prevButton = document.getElementById('prev-testimonial');
-    const nextButton = document.getElementById('next-testimonial');
-    let currentSlide = 0;
-    let testimonialInterval = null;
-
-    function showSlide(index) {
-        testimonialSlides.forEach((slide, i) => {
-            slide.classList.toggle('hidden', i !== index);
-        });
-    }
-
-    function startSliderInterval() {
-        // Always clear existing interval before starting a new one
-        clearInterval(testimonialInterval);
-        testimonialInterval = setInterval(() => {
-            currentSlide = (currentSlide + 1) % testimonialSlides.length;
-            showSlide(currentSlide);
-        }, 5000);
-    }
-
-    if (prevButton && nextButton) {
-        prevButton.addEventListener('click', () => {
-            currentSlide = (currentSlide - 1 + testimonialSlides.length) % testimonialSlides.length;
-            showSlide(currentSlide);
-            startSliderInterval(); // Reset interval
-        });
-
-        nextButton.addEventListener('click', () => {
-            currentSlide = (currentSlide + 1) % testimonialSlides.length;
-            showSlide(currentSlide);
-            startSliderInterval(); // Reset interval
-        });
-
-        // Initialize slider
-        showSlide(currentSlide);
-        startSliderInterval();
-
-        const testimonialContainer = document.querySelector('.testimonial-slider');
-        if (testimonialContainer) {
-            testimonialContainer.addEventListener('mouseenter', () => {
-                clearInterval(testimonialInterval);
-            });
-
-            testimonialContainer.addEventListener('mouseleave', () => {
-                startSliderInterval();
-            });
-
-            testimonialContainer.addEventListener('focusin', () => {
-                clearInterval(testimonialInterval);
-            });
-
-            testimonialContainer.addEventListener('focusout', () => {
-                startSliderInterval();
-            });
-        }
-    }
-}
-
         
         // CONTACT FORM VALIDATION - Optimized
         const contactForm = document.getElementById('contact-form');
