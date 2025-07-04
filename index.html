@@ -24,6 +24,66 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 
     <style>
+        /* Start of Portfolio Bot Integration Styles */
+.portfolio-bot-button {
+    position: fixed;
+    bottom: 20px;   /* Adjust as needed */
+    right: 20px;    /* Adjust as needed */
+    background-color: #007bff; /* Example: A nice blue, change as desired */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Makes the button circular */
+    width: 60px;    /* Size of the button */
+    height: 60px;   /* Size of the button */
+    font-size: 24px; /* Icon/text size inside button */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2); /* Subtle shadow */
+    z-index: 1001; /* Ensure button is above other content and the bot frame */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.portfolio-bot-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Styles for the bot container (the frame itself) */
+.portfolio-bot-container {
+    position: fixed;
+    bottom: 90px;   /* Position above the button (button height + some margin) */
+    right: 20px;    /* Align with the button */
+    width: 350px;   /* Desired width of the bot frame */
+    height: 500px;  /* Desired height of the bot frame */
+    border: 1px solid #ccc; /* Light gray border */
+    box-shadow: 0 0 15px rgba(0,0,0,0.15); /* More pronounced shadow */
+    z-index: 1000;  /* Ensure it's above general content, but below the button */
+    background-color: white; /* Background inside the container */
+    border-radius: 12px; /* Slightly more rounded corners */
+    overflow: hidden; /* Important to clip content within the rounded corners */
+    
+    /* Initially hidden and off-screen for the animation */
+    display: none; 
+    transform: translateY(20px); 
+    opacity: 0;
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out; /* Smoother transition */
+}
+
+/* State when the bot container is active (visible) */
+.portfolio-bot-container.active {
+    display: block; /* Make it visible */
+    transform: translateY(0); /* Slide up to final position */
+    opacity: 1; /* Fade in */
+}
+
+/* Styles for the iframe itself */
+.portfolio-bot-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none; /* Remove default iframe border */
+}
+/* End of Portfolio Bot Integration Styles */
         /* Loading screen styles */
         #loading-screen {
             position: fixed;
@@ -1249,6 +1309,11 @@
     <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-yellow-500 text-black flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300" aria-label="Back to top">
         <i class="fas fa-arrow-up"></i>
     </button>
+    <button class="portfolio-bot-button" id="portfolioBotToggleButton" aria-label="Open Portfolio Chatbot">💬</button> 
+
+<div class="portfolio-bot-container" id="portfolioBotContainer">
+    <iframe src="https://portfolio-bot.streamlit.app/" title="Portfolio Chatbot Assistant" loading="lazy"></iframe>
+</div>
 </body>
    <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -1855,5 +1920,39 @@
              }
         }, 4000);
     });
+    const portfolioBotToggleButton = document.getElementById('portfolioBotToggleButton');
+    const portfolioBotContainer = document.getElementById('portfolioBotContainer');
+    let botTimeout; // Variable to hold the timeout ID
+
+    portfolioBotToggleButton.addEventListener('click', () => {
+        // If the bot is currently visible, hide it immediately
+        if (portfolioBotContainer.classList.contains('active')) {
+            clearTimeout(botTimeout); // Clear any pending show timeouts
+            portfolioBotContainer.classList.remove('active');
+            portfolioBotToggleButton.textContent = '💬'; // Change back to chat icon
+            portfolioBotToggleButton.setAttribute('aria-label', 'Open Portfolio Chatbot');
+        } else {
+            // If the bot is currently hidden, set a timeout to show it
+            portfolioBotToggleButton.textContent = '...'; // Indicate loading
+            portfolioBotToggleButton.setAttribute('aria-label', 'Loading Portfolio Chatbot...');
+
+            botTimeout = setTimeout(() => {
+                portfolioBotContainer.classList.add('active'); // Add 'active' class after 4 seconds
+                portfolioBotToggleButton.textContent = '✖'; // Change to close icon
+                portfolioBotToggleButton.setAttribute('aria-label', 'Close Portfolio Chatbot');
+            }, 4000); // 4000 milliseconds = 4 seconds
+        }
+    });
+
+    // Optional: Close bot if user clicks outside of it
+    document.addEventListener('click', (event) => {
+        if (!portfolioBotContainer.contains(event.target) && !portfolioBotToggleButton.contains(event.target) && portfolioBotContainer.classList.contains('active')) {
+            clearTimeout(botTimeout); // Clear any pending show timeouts if closing manually
+            portfolioBotContainer.classList.remove('active');
+            portfolioBotToggleButton.textContent = '💬'; // Reset button text
+            portfolioBotToggleButton.setAttribute('aria-label', 'Open Portfolio Chatbot');
+        }
+    });
+       
 </script>
 </html>
